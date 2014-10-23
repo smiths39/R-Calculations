@@ -1,0 +1,23 @@
+require(tcltk)
+ReturnVal <- tkmessageBox(title = "Probability Program",
+    message = "Would you like to run the program?", icon = "question", type = "yesno", default = "yes")
+
+tt<-tktoplevel()
+tl<-tklistbox(tt,height=4,selectmode="single",background="white")
+tkgrid(tklabel(tt,text="What distribution would you like to run?"))
+tkgrid(tl)
+distributions <- c("Hypergeometric", "Binomial", "Geometric", "Poisson")
+for (i in (1:4))
+{
+    tkinsert(tl,"end",distributions[i])
+}
+tkselection.set(tl,2)
+
+OnOK <- function()
+{
+	distributionChoice <- distributions[as.numeric(tkcurselection(tl))+1]
+    tkdestroy(tt)
+}
+OK.but <-tkbutton(tt,text="   OK   ",command=OnOK)
+tkgrid(OK.but)
+tkfocus(tt)

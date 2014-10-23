@@ -1,0 +1,331 @@
+cat('Hypergeometric(h), Binomial(b), Geometric(g), Poisson(p) \n')
+cat('Please enter selected distribution: ')
+
+distribution <- readline()
+
+if(distribution == 'h')
+{	
+	cat('PDF or CDF: ')
+	option <- readline()
+	
+	if(option == 'pdf')
+	{
+		cat('Would you like to use vector? (yes or no): ') 
+		vector <- readline()
+		
+		if(vector == 'yes')
+		{
+			cat('Enter a vector size and 3 parameters: \n')
+			limit <- readline()
+			limit <- as.integer(limit)
+			para_1 <- readline()
+			para_1 <- as.integer(para_1)
+			para_2 <- readline()
+			para_2 <- as.integer(para_2)
+			para_3 <- readline()
+			para_3 <- as.integer(para_3)
+			
+			x <- 0:limit
+			result <- dhyper(x, para_1, para_2, para_3)
+			print(round(result, digits = 2))
+		
+			cat('Would you like plot? (yes or no): ')
+			choice <- readline()
+		
+			if(choice == 'yes')
+				plot(x, dhyper(x, para_1, para_2, para_3), type = "h")
+		}
+		else
+		{
+			cat('Enter 4 parameters: \n')
+			para_1 <- readline()
+			para_1 <- as.integer(para_1)
+			para_2 <- readline()
+			para_2 <- as.integer(para_2)
+			para_3 <- readline()
+			para_3 <- as.integer(para_3)
+			para_4 <- readline()
+			para_4 <- as.integer(para_4)
+			
+			print(round(dhyper(para_1, para_2, para_3, para_4), digits = 2))
+		}
+	}
+	else if(option == 'cdf')
+	{
+		cat('Would you like to use vector? (yes or no): ') 
+		vector <- readline()
+		
+		if(vector == 'yes')
+		{
+			cat('Enter a vector size and 3 parameters: \n')
+			limit <- readline()
+			limit <- as.integer(limit)
+			para_1 <- readline()
+			para_1 <- as.integer(para_1)
+			para_2 <- readline()
+			para_2 <- as.integer(para_2)
+			para_3 <- readline()
+			para_3 <- as.integer(para_3)
+			
+			x <- 0:limit
+			result <- phyper(x, para_1, para_2, para_3)
+			print(round(result, digits = 2))
+		
+			cat('Would you like plot? (yes or no): ')
+			choice <- readline()
+		
+			if(choice == 'yes')
+				plot(x, phyper(x, para_1, para_2, para_3), type = "s")
+		}
+		else
+		{
+			cat('Enter 4 parameters: \n')
+			para_1 <- readline()
+			para_1 <- as.integer(para_1)
+			para_2 <- readline()
+			para_2 <- as.integer(para_2)
+			para_3 <- readline()
+			para_3 <- as.integer(para_3)
+			para_4 <- readline()
+			para_4 <- as.integer(para_4)
+			
+			print(round(phyper(para_1, para_2, para_3, para_4), digits = 2))
+		}
+	}
+}
+if(distribution == 'b')
+{
+	cat('PDF or CDF: ')
+	option <- readline()
+	
+	if(option == 'pdf')
+	{
+		cat('Would you like to use vector? (yes or no): ') 
+		vector <- readline()
+		
+		if(vector == 'yes')
+		{
+			cat('Enter a vector size and 2 parameters(last decimal): \n')
+			limit <- readline()
+			limit <- as.integer(limit)
+			para_1 <- readline()
+			para_1 <- as.integer(para_1)
+			para_2 <- readline()
+			para_2 <- as.numeric(para_2)
+
+			
+			x <- 0:limit
+			result <- dbinom(x, para_1, para_2)
+			print(round(result, digits = 2))
+		
+			cat('Would you like plot? (yes or no): ')
+			choice <- readline()
+		
+			if(choice == 'yes')
+				plot(x, dbinom(x, para_1, para_2), type = "h")
+		}
+		else
+		{
+			cat('Enter 3 parameters (last decimal): \n')
+			para_1 <- readline()
+			para_1 <- as.integer(para_1)
+			para_2 <- readline()
+			para_2 <- as.integer(para_2)
+			para_3 <- readline()
+			para_3 <- as.numeric(para_3)
+
+			print(round(dbinom(para_1, para_2, para_3), digits = 2))
+		}
+	}
+	else if(option == 'cdf')
+	{
+		cat('Would you like to use vector? (yes or no): ') 
+		vector <- readline()
+		
+		if(vector == 'yes')
+		{
+			cat('Enter a vector size and 2 parameters (last decimal): \n')
+			limit <- readline()
+			limit <- as.integer(limit)
+			para_1 <- readline()
+			para_1 <- as.integer(para_1)
+			para_2 <- readline()
+			para_2 <- as.numeric(para_2)
+
+			
+			x <- 0:limit
+			result <- pbinom(x, para_1, para_2)
+			print(round(result, digits = 2))
+		
+			cat('Would you like plot? (yes or no): ')
+			choice <- readline()
+		
+			if(choice == 'yes')
+				plot(x, pbinom(x, para_1, para_2), ylim = c(0,1), type = "s")
+		}
+		else
+		{
+			cat('Enter 3 parameters (last decimal): \n')
+			para_1 <- readline()
+			para_1 <- as.integer(para_1)
+			para_2 <- readline()
+			para_2 <- as.integer(para_2)
+			para_3 <- readline()
+			para_3 <- as.numeric(para_3)
+			
+			print(round(pbinom(para_1, para_2, para_3), digits = 2))
+		}
+	}
+}
+if(distribution == 'g')
+{
+	cat('PDF or CDF: ')
+	option <- readline()
+	
+	if(option == 'pdf')
+	{
+		cat('Would you like to use vector? (yes or no): ') 
+		vector <- readline()
+		
+		if(vector == 'yes')
+		{
+			cat('Enter a vector size and a decimal: \n')
+			limit <- readline()
+			limit <- as.integer(limit)
+			para_1 <- readline()
+			para_1 <- as.numeric(para_1)
+
+			
+			x <- 0:limit
+			result <- dgeom(x, para_1)
+			print(round(result, digits = 2))
+		
+			cat('Would you like plot? (yes or no): ')
+			choice <- readline()
+		
+			if(choice == 'yes')
+				plot(x+1, dgeom(x, para_1), type = "h")
+		}
+		else
+		{
+			cat('Enter 2 parameters (last decimal): \n')
+			para_1 <- readline()
+			para_1 <- as.integer(para_1)
+			para_2 <- readline()
+			para_2 <- as.numeric(para_2)
+
+			print(round(dgeom(para_1, para_2), digits = 2))
+		}
+	}
+	else if(option == 'cdf')
+	{
+		cat('Would you like to use vector? (yes or no): ') 
+		vector <- readline()
+		
+		if(vector == 'yes')
+		{
+			cat('Enter a vector size and a decimal: \n')
+			limit <- readline()
+			limit <- as.integer(limit)
+			para_1 <- readline()
+			para_1 <- as.numeric(para_1)
+
+			
+			x <- 0:limit
+			result <- pgeom(x, para_1)
+			print(round(result, digits = 2))
+		
+			cat('Would you like plot? (yes or no): ')
+			choice <- readline()
+		
+			if(choice == 'yes')
+				plot(x+1, pgeom(x, para_1), ylim = c(0,1), type = "s")
+		}
+		else
+		{
+			cat('Enter 2 parameters (last decimal): \n')
+			para_1 <- readline()
+			para_1 <- as.integer(para_1)
+			para_2 <- readline()
+			para_2 <- as.numeric(para_2)
+			
+			print(round(pgeom(para_1, para_2), digits = 2))
+		}
+	}
+}
+if(distribution == 'p')
+{
+	cat('PDF or CDF: ')
+	option <- readline()
+	
+	if(option == 'pdf')
+	{
+		cat('Would you like to use vector? (yes or no): ') 
+		vector <- readline()
+		
+		if(vector == 'yes')
+		{
+			cat('Enter a vector size and a parameter: \n')
+			limit <- readline()
+			limit <- as.integer(limit)
+			para_1 <- readline()
+			para_1 <- as.integer(para_1)
+
+			
+			x <- 0:limit
+			result <- dpois(x, para_1)
+			print(round(result, digits = 2))
+		
+			cat('Would you like plot? (yes or no): ')
+			choice <- readline()
+		
+			if(choice == 'yes')
+				plot(x, dpois(x, para_1), type = "h")
+		}
+		else
+		{
+			cat('Enter 2 parameters: \n')
+			para_1 <- readline()
+			para_1 <- as.integer(para_1)
+			para_2 <- readline()
+			para_2 <- as.integer(para_2)
+
+			print(round(dpois(para_1, para_2), digits = 2))
+		}
+	}
+	else if(option == 'cdf')
+	{
+		cat('Would you like to use vector? (yes or no): ') 
+		vector <- readline()
+		
+		if(vector == 'yes')
+		{
+			cat('Enter a vector size and a parameter: \n')
+			limit <- readline()
+			limit <- as.integer(limit)
+			para_1 <- readline()
+			para_1 <- as.integer(para_1)
+
+			
+			x <- 0:limit
+			result <- ppois(x, para_1)
+			print(round(result, digits = 2))
+		
+			cat('Would you like plot? (yes or no): ')
+			choice <- readline()
+		
+			if(choice == 'yes')
+				plot(x, ppois(x, para_1), type = "s")
+		}
+		else
+		{
+			cat('Enter 2 parameters: \n')
+			para_1 <- readline()
+			para_1 <- as.integer(para_1)
+			para_2 <- readline()
+			para_2 <- as.integer(para_2)
+			
+			print(round(ppois(para_1, para_2), digits = 2))
+		}
+	}
+}
